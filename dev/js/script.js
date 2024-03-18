@@ -1,6 +1,3 @@
-
-const form_login = document.getElementById('form_login');
-
 function create_create_btn() {
     var username = document.getElementById('create_username').value;
     var password = document.getElementById('create_password').value;
@@ -42,6 +39,7 @@ function login_create_btn() {
     window.location = "../script_pages/create.php"
 }
 
+var form_login = document.getElementById('form_login');
 form_login.addEventListener('submit',(event)=>{
     event.preventDefault();
     form_login.reset();
@@ -62,9 +60,14 @@ function contact_list() {
 }
 
 // message logout button
-function logout_btn() {
+function logout_btn(logout_btn_is_clicked) {
     const xHTTP = new XMLHttpRequest();
-
-    xHTTP.open("POST","");
-    
+    xHTTP.onload = function() {
+            if(this.responseText) {
+                window.location = "../script_pages/login.php";
+            }
+    }
+    xHTTP.open("POST","../script_pages/scripts/logout_btn.php",false);
+    xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xHTTP.send("logout_btn_is_clicked="+logout_btn_is_clicked);
 }

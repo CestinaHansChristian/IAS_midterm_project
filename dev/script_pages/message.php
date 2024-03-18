@@ -5,9 +5,10 @@
 </head>
 <body class="shrink">
 <div class="message-content m-40 border-2 border-black rounded-lg">
+    <div id="status"></div>
     <div class="container mx-auto font-mono shadow-lg">
         <div class="logout-btn p-2 flex flex-row-reverse bg-sky-200 rounded-tl-lg rounded-tr-lg">
-            <button type="submit" onclick="logout_btn()" class="border-2 border-red-600 bg-red-400 rounded-lg font-semibold p-1 hover:bg-red-600">Logout</button>
+            <button type="submit" value="true" onclick="logout_btn(this.value)" class="border-2 border-red-600 bg-red-400 rounded-lg font-semibold p-1 hover:bg-red-600">Logout</button>
         </div>
         <div class="message-wrapper grid grid-cols-6">
             <div class="contacts border-2 border-black col-start-1 bg-orange-300 gap-y-2">
@@ -55,6 +56,7 @@
             </div>
         </div>
     </div>
+    <?php include("partial/footer.php")?>
 </div>
 </body>
 </html>
