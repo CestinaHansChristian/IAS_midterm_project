@@ -15,10 +15,12 @@ function create_create_btn() {
     }
 }
 
+
+
 function login_btn() {
     var username = document.getElementById('login_username').value;
     var password = document.getElementById('login_password').value;
-    if(!username && !password) {
+    if(!username || !password) {
         alert('Must not contain null characters')
     } else {
         const xHTTP = new XMLHttpRequest();
@@ -26,7 +28,7 @@ function login_btn() {
             if(this.responseText) {
                 window.location = "../script_pages/message.php";
             } else {
-                document.getElementById('status').innerHTML = this.responseText;
+                document.getElementById('status').innerHTML = "Uh oh, it seems like this account is an 👾";
             }
         }
         xHTTP.open("POST","../script_pages/scripts/loginAcc.php",false);
@@ -45,18 +47,15 @@ form_login.addEventListener('submit',(event)=>{
     form_login.reset();
 });
 
-function send_message() {
 
-}
-
+// get users list
 function contact_list() {
     const xHTTP = new XMLHttpRequest();
-    xHTTP.onreadystatechange = function() {
-            
+    xHTTP.onload = function() {
+        document.getElementById("contact_list").innerHTML = this.responseText;
     }
-    xHTTP.open("GET","../script_pages/scripts/loginAcc.php",false);
-    xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xHTTP.send("user="+username+"&pass="+password);
+    xHTTP.open("GET","../script_pages/scripts/getUsers.php",false);
+    xHTTP.send();
 }
 
 // message logout button
@@ -70,4 +69,17 @@ function logout_btn(logout_btn_is_clicked) {
     xHTTP.open("POST","../script_pages/scripts/logout_btn.php",false);
     xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xHTTP.send("logout_btn_is_clicked="+logout_btn_is_clicked);
+}
+
+// send message
+function send_message() {
+    const xHTTP = new XMLHttpRequest();
+    const message_field = document.getElementById('send_message_field').value;
+    xHTTP.onload = function() {
+        document.getElementById('message_sent').innerHTML = this.responseText;
+    }
+    xHTTP.open('POST',"../script_pages/scripts/sendMsg.php",false);
+    xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xHTTP.send("message_field="+message_field);
+    message_field.reset();
 }

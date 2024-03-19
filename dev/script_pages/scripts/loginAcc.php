@@ -7,11 +7,11 @@
     $createQuery = "SELECT acc_pass FROM accounts WHERE acc_user ='$username'";
 
     $result = $sqlConn->query($createQuery);
-
-    $row = $result->fetch_assoc();
-    if(password_verify($password,$row['acc_pass'])) {
-        echo true;
-    } else {
-        echo false;
+    while($row = $result->fetch_assoc()) {
+        if(password_verify($password,$row['acc_pass'])) {
+            echo true;
+        } else {
+            echo false;
+        }
     }
 ?>
