@@ -16,11 +16,11 @@
             <div class="grid grid-rows-2 ">
                 <div class="input-form py-2 space-y-5">
                     <input type="text" id="login_username" autofocus required placeholder="Username" class="border-2 border-blue-500 rounded-lg placeholder:ps-2 focus:ps-2">
-                    <input type="password" id="login_password" required placeholder="Password" class="border-2 border-blue-500 rounded-lg placeholder:ps-2 focus:ps-2">
+                    <input type="password" id="login_password" autofocus required placeholder="Password" class="border-2 border-blue-500 rounded-lg placeholder:ps-2 focus:ps-2">
                 </div>
                 <div class="button-nav grid gap-y-2 ">
-                    <button type="submit" onclick="login_btn()" class="bg-blue-300 rounded-md hover:bg-blue-600 hover:font-semibold">Login</button>
-                    <button type="submit" onclick="login_create_btn()" class="bg-green-300 rounded-md hover:bg-green-600 hover:font-semibold">Create Account</button>
+                    <button type="reset" onclick="login_btn()" class="bg-blue-300 rounded-md hover:bg-blue-600 hover:font-semibold">Login</button>
+                    <button type="menu" onclick="login_create_btn()" class="bg-green-300 rounded-md hover:bg-green-600 hover:font-semibold">Create Account</button>
                 </div>
             </div>
         </form>

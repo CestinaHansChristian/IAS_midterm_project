@@ -15,8 +15,6 @@ function create_create_btn() {
     }
 }
 
-
-
 function login_btn() {
     var username = document.getElementById('login_username').value;
     var password = document.getElementById('login_password').value;
@@ -56,6 +54,8 @@ function contact_list() {
     }
     xHTTP.open("GET","../script_pages/scripts/getUsers.php",false);
     xHTTP.send();
+    retrieve_msg();
+    display_message();
 }
 
 // message logout button
@@ -76,14 +76,39 @@ function send_message() {
     const xHTTP = new XMLHttpRequest();
     const message_field = document.getElementById('send_message_field').value;
     const reciever_msg = document.querySelector("input[id='userId']:checked")
-    if(reciever_msg != null) {
-        console.log(reciever_msg.value);
+    document.getElementById('status').innerHTML = '';
+    if(!message_field && !reciever_msg) {
+        document.getElementById('status').innerHTML = "Please select a recipient"
+    } else {
+        let reciever_msg_id = reciever_msg.value;
+        if(reciever_msg != null) {
+            console.log(reciever_msg_id);
+            xHTTP.onload = function() {
+                document.getElementById('status').innerHTML = this.responseText;
+            }
+            xHTTP.open('POST',"../script_pages/scripts/sendMsg.php",false);
+            xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xHTTP.send("message_field="+message_field+ "&sent_to=" +reciever_msg_id);
+            // message_field.reset();
+            console.log("sent");
+        }
     }
-    xHTTP.onload = function() {
+}
+
+function display_message() {
+    const xHTTP = new XMLHttpRequest;
+    xHTTP.onreadystatechange = function() {
+        document.getElementById('sent_message').innerHTML = this.responseText;
+    }
+    xHTTP.open('GET','../script_pages/scripts/displayMsg.php',true);
+    xHTTP.send();
+}
+
+function retrieve_msg() {
+    const xHTTP = new XMLHttpRequest;
+    xHTTP.onreadystatechange = function() {
         document.getElementById('message_sent').innerHTML = this.responseText;
     }
-    // xHTTP.open('POST',"../script_pages/scripts/sendMsg.php",false);
-    // xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // xHTTP.send("message_field="+message_field);
-    message_field.reset();
+    xHTTP.open('GET','../script_pages/scripts/retrieveMsg.php',true);
+    xHTTP.send();
 }

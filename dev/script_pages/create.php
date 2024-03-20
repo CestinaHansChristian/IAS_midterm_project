@@ -14,7 +14,7 @@
                     <input type="password" required autofocus id="create_password" placeholder="Password" class="border-2 border-blue-500 rounded-lg placeholder:ps-2 focus:ps-2">
                 </div>
                 <div class="button-nav grid h-10">
-                    <button type="submit" onclick="create_create_btn()" class="bg-green-300 rounded-md hover:bg-green-600 hover:font-semibold">Create Account</button>
+                    <button type="reset" onclick="create_create_btn()" class="bg-green-300 rounded-md hover:bg-green-600 hover:font-semibold">Create Account</button>
                 </div>
             </div>
         </form>

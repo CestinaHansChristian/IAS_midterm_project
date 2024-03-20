@@ -3,7 +3,7 @@
 <head>
     <?php include("partial/head.php")?>
 </head>
-<body class="shrink" onload="contact_list()">
+<body class="shrink" onload="contact_list()" onload="retrieve_msg()">
 <?php
     session_start();
     if($_SESSION['page'][0] === 1) {
@@ -25,34 +25,16 @@
                 </div>
             </div>
             <div class="message-box overflow-y-scroll border-2 border-black col-start-2 col-end-7 h-40">
-                <div class="message_box h-44 bg-gradient-to-tr from-orange-300 to-red-200 p-1">
+                <div class="message_box h-auto bg-gradient-to-tr from-orange-300 to-red-200 p-1">
                     <!-- sender screen start -->
-                    <div class="sender-screen border-2 border-black m-1">
-                        <div class="message-container flex flex-row-reverse">
-                            <div class="flex gap-x-2">
-                                <!-- message content -->
-                                <div class="message border-2 border-black place-content-center grid bg-violet-400">
-                                    <p id="message_sent"></p>
-                                </div>
-                                <!-- circle -->
-                                <div class="image bg-orange-300 w-12 h-12 rounded-full border-2 border-orange-500">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ul id="sent_message" class="sender-screen space-y-5 pb-5 m-1">
+                        
+                    </ul>
                     <!-- sender screen end -->
 
                     <!-- other chat start -->
-                    <div class="sender-screen border-2 border-black m-1">
-                        <div class="message-container flex">
-                            <div class="flex gap-x-2 flex-row-reverse">
-                                <div class="message border-2 border-black place-content-center grid bg-violet-400">
-                                    Lorem ipsum dolor sit amet.
-                                </div>
-                                <div class="image bg-orange-300 w-12 h-12 rounded-full border-2 border-orange-500">
-                                </div>
-                            </div>
-                        </div>
+                    <div id="message_sent" class="sender-screen m-1 space-y-5 pb-5">
+                            
                     </div>
                     <!-- other chat end -->
                 </div>
