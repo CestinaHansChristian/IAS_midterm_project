@@ -41,11 +41,11 @@ function login_create_btn() {
     window.location = "../script_pages/create.php"
 }
 
-var form_login = document.getElementById('form_login');
-form_login.addEventListener('submit',(event)=>{
-    event.preventDefault();
-    form_login.reset();
-});
+// var form_login = document.getElementById('form_login');
+// form_login.addEventListener('submit',(event)=>{
+//     event.preventDefault();
+//     form_login.reset();
+// });
 
 
 // get users list
@@ -75,11 +75,15 @@ function logout_btn(logout_btn_is_clicked) {
 function send_message() {
     const xHTTP = new XMLHttpRequest();
     const message_field = document.getElementById('send_message_field').value;
+    const reciever_msg = document.querySelector("input[id='userId']:checked")
+    if(reciever_msg != null) {
+        console.log(reciever_msg.value);
+    }
     xHTTP.onload = function() {
         document.getElementById('message_sent').innerHTML = this.responseText;
     }
-    xHTTP.open('POST',"../script_pages/scripts/sendMsg.php",false);
-    xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xHTTP.send("message_field="+message_field);
+    // xHTTP.open('POST',"../script_pages/scripts/sendMsg.php",false);
+    // xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xHTTP.send("message_field="+message_field);
     message_field.reset();
 }
