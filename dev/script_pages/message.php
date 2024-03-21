@@ -15,10 +15,10 @@
             <button type="submit" value="true" onclick="logout_btn(this.value)" class="border-2 border-red-600 bg-red-400 rounded-lg font-semibold p-1 hover:bg-red-600">Logout</button>
         </div>
         <div class="message-wrapper grid grid-cols-6">
-            <div class="contacts border-2 border-black col-start-1 bg-orange-300 gap-y-2 overflow-y-scroll overflow-x-hidden h-auto w-auto">
-                <h4 class="sticky top-0 text-center bg-red-400 border-2 border-black">Contact List</h4>
+            <div class="contacts border-2 border-black col-start-1 bg-orange-300 pb-5 gap-y-2 overflow-y-scroll overflow-x-hidden h-auto w-auto">
+                <h4 class="sticky top-0 text-center bg-red-400 border-2 border-black">Registered Accounts</h4>
                 <div class="ul mx-1 h-32">
-                    <ul class="pt-1">
+                    <ul class="py-1">
                         <div id="contact_list" class="space-y-3">
                         </div>
                     </ul>

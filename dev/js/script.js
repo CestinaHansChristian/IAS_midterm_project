@@ -112,3 +112,6 @@ function retrieve_msg() {
     xHTTP.open('GET','../script_pages/scripts/retrieveMsg.php',true);
     xHTTP.send();
 }
+
+setInterval(retrieve_msg(),100);
+setInterval(display_message(),100)
