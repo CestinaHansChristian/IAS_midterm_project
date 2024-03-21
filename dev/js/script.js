@@ -89,7 +89,7 @@ function send_message() {
             xHTTP.open('POST',"../script_pages/scripts/sendMsg.php",false);
             xHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xHTTP.send("message_field="+message_field+ "&sent_to=" +reciever_msg_id);
-            // message_field.reset();
+            message_field.innerHTML = '';
             console.log("sent");
         }
     }

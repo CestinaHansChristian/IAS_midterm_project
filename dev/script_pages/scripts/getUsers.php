@@ -1,6 +1,6 @@
 <?php
     include("db_con.php");
-    $contact_list = "SELECT account_id,acc_user FROM accounts";
+    $contact_list = "SELECT * FROM accounts ORDER BY acc_user ASC";
 
     $contact_list_res = $sqlConn->query($contact_list);
     while ($row_contact_list = $contact_list_res->fetch_assoc()) {

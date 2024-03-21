@@ -16,6 +16,7 @@ while( $row_sent_message = $result_send_message->fetch_assoc()) {
                 $row_sent_message[message_box]
             </div>
             <div class='image bg-orange-300 w-12 h-12 rounded-full border-2 border-orange-500'>
+                $_SESSION[user_name]
             </div>
         </div>
     </div>

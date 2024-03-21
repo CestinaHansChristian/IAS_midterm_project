@@ -14,6 +14,17 @@
         <div class="logout-btn p-2 flex flex-row-reverse bg-sky-200 rounded-tl-lg rounded-tr-lg">
             <button type="submit" value="true" onclick="logout_btn(this.value)" class="border-2 border-red-600 bg-red-400 rounded-lg font-semibold p-1 hover:bg-red-600">Logout</button>
         </div>
+        <div class="container bg-sky-200">
+            <p class="text-center font-semibold">
+                <?php 
+                    if(isset($_SESSION['user_name']) && !empty($_SESSION['user_name'])) {
+                        echo "You are currently signed in as: " .$_SESSION['user_name'];
+                    }  else {
+                        echo 'You are currently not logged in';
+                    }
+                ?>
+            </p>
+        </div>
         <div class="message-wrapper grid grid-cols-6">
             <div class="contacts border-2 border-black col-start-1 bg-orange-300 pb-5 gap-y-2 overflow-y-scroll overflow-x-hidden h-auto w-auto">
                 <h4 class="sticky top-0 text-center bg-red-400 border-2 border-black">Registered Accounts</h4>
